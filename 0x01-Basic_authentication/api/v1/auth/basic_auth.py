@@ -45,10 +45,10 @@ class BasicAuth(Auth):
         """user credentials header
         """
         if not decoded_base64_authorization_header:
-            return None
+            return None, None
 
         if not isinstance(decoded_base64_authorization_header, str):
-            return None
+            return None, None
 
         try:
             value = decoded_base64_authorization_header.split(':', 1)
@@ -56,4 +56,4 @@ class BasicAuth(Auth):
             second_value = value[1].strip()
             return first_value, second_value
         except Exception:
-            return None
+            return None, None
