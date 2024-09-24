@@ -1,7 +1,9 @@
+import logging
 from db import DB
 from user import User
 import bcrypt
 from sqlalchemy.orm.exc import NoResultFound
+logging.disable(logging.WARNING)
 
 
 def _hash_password(password: str) -> bytes:
@@ -11,8 +13,8 @@ def _hash_password(password: str) -> bytes:
     Returns:
        bytes
     """
-
-    return = bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt())
+    e_pwd = password.encode()
+    return bcrypt.hashpw(e_pwd, bcrypt.gensalt())
 
 
 class Auth:
