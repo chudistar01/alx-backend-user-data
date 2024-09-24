@@ -45,14 +45,16 @@ class DB:
         Returns:
            User: User object representing new user
         """
-        session = self._session
+
+        new_user = User(email=email, hashed_password=hashed_password)
+
         try:
-            new_user = User(email=email, hashed_password=hashed_password)
-            session.add(new_user)
-            session.commit()
+            self._session.add(new_user)
+            self._session.commit()
         except Exception as e:
-            session.rollback()
-            new_user = None
+            print(f"Error adding user to database: {e}")
+            self._session.rollback()
+            raise
         return new_user
 
     def find_user_by(self, **kwargs: Dict[str, str]) -> User:
