@@ -26,8 +26,7 @@ def users() -> str:
     """POST /users                                                                                                                             
     Rturns: JSON Messsages
     """
-    email = request.form.get("email")
-    password = request.form.get("password")
+    email, password = request.form.get("email"), request.form.get("password")
 
     try:
         AUTH.register_user(email, password)
