@@ -27,7 +27,7 @@ def users() -> str:
     Rturns: JSON Messsages                                                                                                                          
     """
     email = request.form.get("email")
-    password = request.form("password")
+    password = request.form.get("password")
 
     try:
         AUTH.register_user(email, password)
