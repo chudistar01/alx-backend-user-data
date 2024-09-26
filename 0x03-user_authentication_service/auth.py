@@ -1,3 +1,7 @@
+#!/usr/bin/env python3
+"""Module authentication
+"""
+
 import logging
 from db import DB
 from user import User
