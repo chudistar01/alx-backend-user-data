@@ -23,8 +23,8 @@ def index() -> str:
 
 @app.route("/users", methods=["POST"], strict_slashes=False)
 def users() -> str:
-    """POST /users                                                                                                                                  
-    Rturns: JSON Messsages                                                                                                                          
+    """POST /users                                                                                                                             
+    Rturns: JSON Messsages
     """
     email = request.form.get("email")
     password = request.form.get("password")
