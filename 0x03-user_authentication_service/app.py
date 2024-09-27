@@ -23,7 +23,7 @@ def index() -> str:
 
 @app.route("/users", methods=["POST"], strict_slashes=False)
 def users() -> str:
-    """POST /users                                                                                                                            
+    """POST /users
     Returns: JSON Messsages
     """
     email, password = request.form.get("email"), request.form.get("password")
@@ -37,8 +37,8 @@ def users() -> str:
 
 @app.route("/sessions", methods=["POST"], strict_slashes=False)
 def login() -> str:
-    """POST /users                                                                                                                                  
-    Returns: JSON Messsages  
+    """POST /users
+    Returns: JSON Messsages
     """
     email, password = request.form.get("email"), request.form.get("password")
 
