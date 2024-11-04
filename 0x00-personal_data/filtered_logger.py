@@ -4,11 +4,11 @@
 import os
 import re
 import logging
-import typing
+from typing import List
 import mysql.connector
 
 
-def filter_datum(fields: typing.List[str], redaction: str, message: str,
+def filter_datum(fields: List[str], redaction: str, message: str,
                  separator: str) -> str:
     """filter"""
     for field in fields:
