@@ -10,7 +10,6 @@ import mysql.connector
 
 def filter_datum(fields: [str], redaction: str, message: str,
                  separator: str) -> str:
-    """filter datum"""
     for field in fields:
         message = re.sub(f'{field}=.*?{separator}',
                          f'{field}={redaction}{separator}', message)
