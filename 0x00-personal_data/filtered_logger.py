@@ -8,8 +8,9 @@ from typing import List
 import mysql.connector
 
 
-def filter_datum(fields: [str], redaction: str, message: str,
+def filter_datum(fields: List[str], redaction: str, message: str,
                  separator: str) -> str:
+    """filter"""
     for field in fields:
         message = re.sub(f'{field}=.*?{separator}',
                          f'{field}={redaction}{separator}', message)
