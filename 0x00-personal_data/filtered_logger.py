@@ -8,14 +8,13 @@ from typing import List
 import mysql.connector
 
 
-
 def filter_datum(fields: [str], redaction: str, message: str,
                  separator: str) -> str:
     """filter datum"""
-    return re.sub(
-        r'(' + '|'.join(fields) + r')=[^' + re.escape(separator) + r']*',
-        lambda m: f"{m.group(1)}={redaction}",
-        message)
+    for field in fields:
+        message = re.sub(f'{field}=.*?{separator}',
+                         f'{field}={redaction}{separator}', message)
+        return message
 
 
 class RedactingFormatter(logging.Formatter):
