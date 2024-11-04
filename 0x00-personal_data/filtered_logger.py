@@ -76,6 +76,6 @@ def main():
 
     for row in cursor:
         str_row = ''.join(f'{f}={str(r)}; ' for r, f in zip(row, field_names))
-        logger.info(str_row.strip())x
+        logger.info(str_row.strip())
     cursor.close()
     db.close()
