@@ -9,11 +9,11 @@ from typing import List
 
 def filter_datum(fields: [str], redaction: str, message: str,
                  separator: str) -> str:
-    """Returns obfuscated log messages"""
-    for field in fields:
-        message = re.sub(f'{field}=(.*?){separator}',
-                         f'{field}={redaction}{separator}', message)
-    return message
+    """filter datum"""
+    return re.sub(
+        r'(' + '|'.join(fields) + r')=[^' + re.escape(separator) + r']*',
+        lambda m: f"{m.group(1)}={redaction}",
+        message)
 
 
 class RedactingFormatter(logging.Formatter):
@@ -59,7 +59,7 @@ def get_db() -> mysql.connector.connection.MySQLConnection:
         password=os.getenv('PERSONAL_DATA_DB_PASSWORD', ''),
         host=os.getenv('PERSONAL_DATA_DB_HOST', 'localhost'),
         database=os.getenv('PERSONAL_DATA_DB_NAME')
-        )
+    )
     return db_connect
 
 
