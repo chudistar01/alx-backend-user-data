@@ -53,7 +53,6 @@ def authenticate_user():
         pass
     else:
         request.current_user = auth.current_user(request)
-        
         excluded_paths = [
             '/api/v1/status/',
             '/api/v1/unauthorized/',
